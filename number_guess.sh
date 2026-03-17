@@ -22,3 +22,19 @@ NUMBER_OF_GUESSES=0
 
 echo "Guess the secret number between 1 and 1000:"
 read GUESS
+while [[ $GUESS -ne $SECRET_NUMBER ]]
+do
+  if [[ ! $GUESS =~ ^[0-9]+$ ]]
+  then
+    echo "That is not an integer, guess again:"
+  else
+    ((NUMBER_OF_GUESSES++))
+    if [[ $GUESS -gt $SECRET_NUMBER ]]
+    then
+      echo "It's lower than that, guess again:"
+    else
+      echo "It's higher than that, guess again:"
+    fi
+  fi
+  read GUESS
+done
